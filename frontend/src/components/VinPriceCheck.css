@@ -1,0 +1,313 @@
+/* --- 1. Root Container: Alignment with Global Header --- */
+.vin-check-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #0C0E12; /* Matches App background */
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden; /* Prevent body scroll, use content-area for scroll */
+}
+
+/* --- 2. Scrollable Content Area --- */
+.vin-content-area {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px; /* Spacing from the Global Header */
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- 3. Header Section (Internal Hero) --- */
+.vin-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.logo-badge {
+  background: rgba(33, 202, 185, 0.1);
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px auto;
+  border: 1px solid rgba(33, 202, 185, 0.2);
+}
+
+.vin-header h1 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+  color: #fff;
+}
+
+.vin-header p {
+  color: #8b949e;
+  font-size: 14px;
+}
+
+/* --- 4. Input Card & Form --- */
+.vin-card {
+  width: 100%;
+  max-width: 500px;
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+.vin-form-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #8b949e;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.input-with-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  left: 14px;
+  color: #8b949e;
+}
+
+.input-with-icon input {
+  width: 100%;
+  background: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 10px;
+  padding: 12px 14px 12px 42px;
+  color: white;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.input-with-icon input:focus {
+  border-color: #21CAB9; /* Brand Teal */
+}
+
+/* Monospace for VIN field specifically */
+.input-field-group:first-child input {
+  font-family: 'JetBrains Mono', 'Monaco', monospace;
+  letter-spacing: 1px;
+}
+
+.check-btn-full {
+  background: #21CAB9;
+  color: #000;
+  border: none;
+  padding: 14px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.check-btn-full:hover:not(:disabled) {
+  background: #1db1a2;
+  transform: translateY(-1px);
+}
+
+.check-btn-full:disabled {
+  background: #30363d;
+  color: #8b949e;
+  cursor: not-allowed;
+}
+
+/* --- 5. Results Section --- */
+.result-display-card {
+  width: 100%;
+  max-width: 500px;
+  background: #1c2128;
+  border: 1px solid #30363d;
+  border-radius: 14px;
+  margin-top: 24px;
+  padding: 24px;
+  animation: slideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.result-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.result-header h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* --- 6. Rating Banners --- */
+.rating-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.rating-banner.good { 
+  background: rgba(33, 202, 185, 0.15); 
+  color: #21CAB9; 
+  border: 1px solid rgba(33, 202, 185, 0.4);
+}
+
+.rating-banner.fair { 
+  background: rgba(255, 179, 64, 0.15); 
+  color: #ffb340; 
+  border: 1px solid rgba(255, 179, 64, 0.4); 
+}
+
+.rating-banner.bad { 
+  background: rgba(248, 81, 73, 0.15); 
+  color: #f85149; 
+  border: 1px solid rgba(248, 81, 73, 0.4); 
+}
+
+/* --- 7. Price Comparison Grid --- */
+.price-comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.price-box {
+  background: #0d1117;
+  padding: 14px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #30363d;
+}
+
+.price-box .label {
+  font-size: 9px;
+  color: #8b949e;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+
+.price-box .value {
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.text-red { color: #ff6b6b !important; }
+.text-green { color: #21CAB9 !important; }
+
+/* --- 8. Specs Footer --- */
+.specs-footer {
+  border-top: 1px solid #30363d;
+  padding-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.spec-tag {
+  background: #161b22;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  color: #c9d1d9;
+  border: 1px solid #30363d;
+}
+
+/* --- 9. Utility & Reset --- */
+.reset-analysis-btn {
+  margin-top: 24px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px;
+  background: transparent;
+  border: 1px solid #30363d;
+  border-radius: 10px;
+  color: #8b949e;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.reset-analysis-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  border-color: #444c56;
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Custom Scrollbar for the content area */
+.vin-content-area::-webkit-scrollbar { width: 6px; }
+.vin-content-area::-webkit-scrollbar-track { background: transparent; }
+.vin-content-area::-webkit-scrollbar-thumb { background: #30363d; border-radius: 10px; }
+
+
+/* --- Remove Spinners from Number Input --- */
+
+/* Chrome, Safari, Edge, Opera */
+.input-with-icon input::-webkit-outer-spin-button,
+.input-with-icon input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.input-with-icon input[type=number] {
+  -moz-appearance: textfield;
+}

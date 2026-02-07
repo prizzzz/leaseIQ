@@ -1,0 +1,398 @@
+/* --- Root Variables for LeaseIQ Theme --- */
+:root {
+  --leaseiq-teal: #21CAB9;
+  --bg-main: #0C0E12;
+  --bg-sidebar: #050608;
+  --bg-card: #111418;
+  --border-muted: #1E2329;
+  --text-muted: #8b949e;
+  --transition: all 0.2s ease-in-out;
+}
+
+/* --- Global Scroll Fix --- */
+html, body {
+  height: auto;
+  min-height: 100%;
+  background-color: var(--bg-main);
+  margin: 0;
+  padding: 0;
+}
+
+/* --- Layout Wrapper --- */
+.page-wrapper.production-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 24px;
+  background-color: var(--bg-main);
+  color: #FFFFFF;
+  
+  /* ADD THESE PROPERTIES */
+  height: 100vh;           /* Fix the wrapper to the screen height */
+  overflow-y: auto;        /* Enable vertical scrolling on the wrapper itself */
+  overflow-x: hidden;      /* Prevent horizontal shifting */
+  box-sizing: border-box;
+}
+
+/* --- Custom Scrollbar (Matching Chat Window) --- */
+
+/* 1. Target the scrollable container */
+.page-wrapper.production-view::-webkit-scrollbar { 
+  width: 4px; 
+}
+
+/* 2. Style the draggable handle */
+.page-wrapper.production-view::-webkit-scrollbar-thumb { 
+  background: #30363d; 
+  border-radius: 10px; 
+}
+
+/* 3. Optional: Style the track (background) to keep it clean */
+.page-wrapper.production-view::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* 4. Support for Firefox (matches the color and thin style) */
+.page-wrapper.production-view {
+  scrollbar-width: thin;
+  scrollbar-color: #30363d transparent;
+}
+
+/* --- Header Section --- */
+.header-box {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.header-box h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 12px;
+}
+
+.header-box p {
+  color: var(--text-muted);
+  font-size: 15px;
+}
+
+/* --- Upload Grid Section --- */
+/* .upload-grid {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  width: 100%;
+  max-width: 700px;
+  margin-bottom: 32px;
+} */
+.upload-grid {
+  display: flex;
+  flex-direction: row; 
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 32px;
+}
+/* .upload-card {
+  flex: 1;
+  background: var(--bg-card);
+  border: 1px solid var(--border-muted);
+  border-radius: 12px;
+  position: relative;
+  transition: var(--transition);
+} */
+.upload-card {
+  flex: 1;
+  min-width: 0; /* Critical: Allows flex items to shrink smaller than content */
+  background: var(--bg-card);
+  border: 1px solid var(--border-muted);
+  border-radius: 12px;
+  position: relative;
+  transition: all 0.2s ease;
+  overflow: hidden;
+}
+.upload-card:hover {
+  border-color: var(--leaseiq-teal);
+  background: rgba(33, 202, 185, 0.05);
+}
+
+.upload-card input[type="file"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.upload-card label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 10px;
+  width: 100%;
+  cursor: pointer;
+  min-height: 160px;
+}
+
+.upload-icon {
+  font-size: 32px;
+  margin-bottom: 16px;
+  filter: opacity(0.8);
+}
+
+.label-text {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-align: center;
+  width: 100%;
+  /* Truncation for long filenames */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 5px;
+}
+
+.upload-card.has-file {
+  border: 1px solid var(--leaseiq-teal);
+  background: rgba(33, 202, 185, 0.08);
+}
+
+.upload-card.has-file .label-text {
+  color: #FFFFFF;
+}
+
+/* .vs-circle {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--text-muted);
+  padding: 0 10px;
+} */
+.vs-circle {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--leaseiq-teal);
+  flex-shrink: 0; /* Prevents VS from being squashed */
+}
+
+/* --- Action Button --- */
+.compare-btn {
+  background: var(--leaseiq-teal);
+  color: #000000;
+  border: none;
+  padding: 14px 48px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-bottom: 56px;
+}
+
+.compare-btn:hover:not(:disabled) {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+.compare-btn:disabled {
+  background: #1E2329;
+  color: #4B5563;
+  cursor: not-allowed;
+}
+
+/* --- Results Dashboard --- */
+.results-container {
+  width: 100%;
+  max-width: 1000px;
+  padding-bottom: 80px;
+  animation: slideUp 0.4s ease-out;
+}
+
+.score-banner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  width: 100%;
+  max-width: 1000px;
+  margin-bottom: 32px;
+}
+
+.score-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border-muted);
+  padding: 24px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.score-box h3 {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.big-score {
+  font-size: 44px;
+  font-weight: 800;
+}
+
+/* --- AI Insights Section --- */
+.insights-section {
+  border: 1px solid var(--border-muted);
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 32px;
+}
+
+.insights-section h4 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-size: 16px;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.insights-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.insights-section li {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-muted);
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin-bottom: 10px;
+  color: #E0E0E0;
+  font-size: 14px;
+  line-height: 1.5;
+  transition: border-color 0.2s ease;
+}
+
+.insights-section li:hover {
+  border-color: var(--leaseiq-teal);
+}
+
+/* --- Details Table --- */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid var(--border-muted);
+  background: var(--bg-card);
+}
+
+.details-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.details-table th {
+  background: #0D1117;
+  padding: 16px;
+  text-align: left;
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid var(--border-muted);
+}
+
+.details-table td {
+  padding: 16px;
+  border-bottom: 1px solid var(--border-muted);
+  font-size: 14px;
+  color: #FFFFFF;
+}
+
+.details-table tr:last-child td {
+  border-bottom: none;
+}
+
+.feature-label {
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+
+/* --- Animations --- */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive Grid for mobile */
+@media (max-width: 768px) {
+  .upload-grid{
+    gap: 8px;
+  }
+  
+  .vs-circle {
+    margin: 10px 0;
+  }
+}
+@media (max-width: 768px) {
+  .page-wrapper.production-view {
+    padding: 40px 24px; /* Less padding on small screens */
+  }
+
+  .header-box h1 {
+    font-size: 24px;
+  }
+
+  .upload-card label {
+    padding: 20px 8px; /* Smaller padding on mobile */
+    min-height: 140px;
+  }
+
+  .upload-icon {
+    font-size: 24px;
+    margin-bottom: 8px
+  }
+
+  .label-text {
+    font-size: 11px;
+    /* Multiline truncation for mobile */
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  .compare-btn {
+    width: 100%; /* Full width button on mobile */
+    padding: 14px 20px;
+  }
+
+  /* Keep score boxes side-by-side but reduce font */
+  .big-score {
+    font-size: 28px;
+  }
+}
+
+/* Only stack on very small phones */
+@media (max-width: 400px) {
+
+  .upload-grid {
+    flex-direction: row;
+    gap: 8px;
+  }
+  .score-banner {
+    grid-template-columns: 2fr;
+  }
+
+}

@@ -1,0 +1,115 @@
+/* Layout wrapper for chat alignment */
+.message-wrapper {
+  display: flex;
+  width: 100%;
+  margin-bottom: 16px;
+  animation: messageSlide 0.3s ease-out;
+}
+
+@keyframes messageSlide {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.user-wrapper {
+  justify-content: flex-end; /* User on the right */
+}
+
+.assistant-wrapper {
+  justify-content: flex-start; /* AI on the left */
+}
+
+/* Base Bubble - Consistent with Glassmorphism theme */
+.bubble {
+  max-width: 80%;
+  padding: 10px 14px;
+  font-size: 13px;
+  line-height: 1.6;
+  word-wrap: break-word;
+  position: relative;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* User Bubble: Deep Grey with sharp accent */
+.user-bubble {
+  background: #1e1e22;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px 12px 2px 12px;
+  border-right: 2px solid #3f3f46; /* Subtle visual "edge" */
+}
+
+/* Assistant Bubble: Themed Teal Glow */
+.assistant-bubble {
+  background: rgba(23, 23, 27, 0.6);
+  backdrop-filter: blur(8px);
+  color: #e2e8f0;
+  border: 1px solid rgba(45, 212, 191, 0.15);
+  border-radius: 12px 12px 12px 2px;
+  /* Subtle glow to signify AI presence */
+  box-shadow: inset 0 0 10px rgba(45, 212, 191, 0.03), 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Markdown Content Styling within Bubbles */
+.bubble h3 {
+  color: #2dd4bf; 
+  margin-top: 4px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Adds a small icon-like dot before AI headers */
+.assistant-bubble h3::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: #2dd4bf;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.bubble p {
+  margin: 6px 0;
+}
+
+.bubble ul, .bubble ol {
+  padding-left: 18px;
+  margin: 8px 0;
+  color: #a1a1aa;
+}
+
+.bubble li {
+  margin-bottom: 4px;
+}
+
+/* Professional Code/Technical blocks */
+.bubble code {
+  background: rgba(0, 0, 0, 0.3);
+  color: #2dd4bf;
+  padding: 2px 5px;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 11px;
+}
+/* --- Tablets and Phones --- */
+@media (max-width: 768px) {
+  /* Targeting the inner bubble div */
+  .message-wrapper > div, 
+  .bubble {
+    max-width: 95% !important; /* Expansion for better readability on small screens */
+    font-size: 14px; /* Slightly larger for easier thumb-scrolling reading */
+    padding: 10px 12px; /* Tighter padding to save space */
+  }
+}
+
+/* --- Small Phones --- */
+@media (max-width: 480px) {
+  .bubble {
+    max-width: 98% !important;
+    border-radius: 12px; /* Simplified corners for very small screens */
+  }
+}

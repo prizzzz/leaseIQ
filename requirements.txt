@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+python-multipart
+sqlalchemy
+psycopg2-binary
+pytesseract
+pdf2image
+openai
+requests
+python-dotenv

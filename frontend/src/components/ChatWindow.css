@@ -1,0 +1,507 @@
+
+/* --- Root Layout --- */
+.chat-window {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #0C0E12 !important;
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  border: none !important;
+}
+
+/* --- Container Logic --- */
+.chat-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+/* --- Header Base Styling --- */
+.chat-header {
+  height: 60px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  background-color: rgba(13, 17, 23, 0.85);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid #30363d !important; /* Divider for active chat */
+  transition: border-bottom 0.3s ease, background-color 0.3s ease;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* --- Welcome State: No Border --- */
+/* .chat-header.no-border {
+  border-bottom: 1px solid transparent;
+  background-color: transparent;
+} */
+
+
+/* --- Right Side Layout --- */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* --- Summary Toggle Button --- */
+.summary-toggle-btn {
+  background: transparent;
+  border: 1px solid #30363d;
+  color: #8b949e;
+  padding: 6px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.summary-toggle-btn:hover:not(:disabled) {
+  background: #1c2128;
+  color: #fff;
+}
+
+.summary-toggle-btn.active {
+  color: #21CAB9; /* Brand Teal */
+  background: rgba(33, 202, 185, 0.1);
+  border-color: #21CAB9;
+}
+
+/* --- Circular Profile Trigger --- */
+.user-profile-dropdown {
+  position: relative;
+}
+
+.profile-trigger {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* Space for name if you keep it */
+}
+
+/* The Circular Avatar */
+.avatar.user-profile {
+  width: 30px;
+  height: 30px;
+  background: #21CAB9; /* Brand Teal */
+  color: #000;
+  border-radius: 50%; /* Perfect Circle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  border: 2px solid transparent;
+  transition: transform 0.2s ease;
+}
+
+.profile-trigger:hover .avatar.user-profile {
+  transform: scale(1.05);
+}
+
+/* Hide text elements to maintain minimal circular look if desired */
+/* .user-firstname, .profile-trigger > svg:not(.avatar svg) { display: none; } */
+
+.user-firstname {
+  font-size: 14px;
+  color: #e6edf3;
+  font-weight: 500;
+}
+
+/* --- Dropdown Menu --- */
+.dropdown-menu {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  width: 220px;
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  padding: 12px 0;
+  z-index: 1000;
+  animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.dropdown-info {
+  padding: 0 16px 12px;
+}
+
+.dropdown-info strong {
+  display: block;
+  color: #fff;
+  font-size: 14px;
+}
+
+.dropdown-info span {
+  font-size: 12px;
+  color: #8b949e;
+}
+
+.dropdown-divider {
+  border: none;
+  border-top: 1px solid #30363d;
+  margin: 8px 0;
+}
+
+.logout-item {
+  width: 100%;
+  padding: 10px 16px;
+  background: transparent;
+  border: none;
+  color: #f85149; /* Distinct Red */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 13.5px;
+}
+
+.logout-item:hover {
+  background: rgba(248, 81, 73, 0.1);
+}
+
+.rotate {
+  transform: rotate(180deg);
+  transition: transform 0.2s ease;
+}
+
+/* WELCOME STATE: Vertical Center Grouping */
+.is-welcome .chat-container {
+  justify-content: center; 
+  align-items: center;
+}
+
+.is-welcome .chat-content-wrapper {
+  flex: 0 1 auto;
+  width: 100%;
+  pointer-events: none; /* Allow clicks to pass through to input in the center */
+}
+
+/* ACTIVE STATE: Top-aligned flow */
+.is-active .chat-container {
+  justify-content: flex-start;
+  border-top: 1px solid #30363d
+}
+
+.is-active .chat-content-wrapper {
+  flex: 1;
+  overflow-y: auto;
+  margin-top: 20px; 
+  pointer-events: all;
+}
+
+/* --- Basic Header Titles --- */
+.header-titles h3 { font-size: 14px; color: #fff; margin: 0; }
+.file-subtitle { font-size: 11px; color: #8b949e; }
+
+/* --- Staged File Preview --- */
+.staged-file-preview {
+  display: flex;
+  align-items: center;
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding: 6px 12px;
+  width: fit-content;
+  margin-bottom: 8px;
+  gap: 8px;
+  font-size: 13px;
+  color: #f1f5f9;
+}
+
+.staged-file-preview button {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.staged-file-preview button:hover {
+  color: #f87171;
+}
+
+.attach-btn.has-file {
+  color: #2dd4bf;
+}
+
+/* --- Welcome View (Compact) --- */
+.welcome-container {
+  text-align: center;
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  pointer-events: auto; /* Re-enable for content */
+}
+
+.welcome-content h1 {
+  font-size: 32px; 
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+}
+
+.welcome-content p {
+  color: #8b949e;
+  font-size: 15px;
+}
+
+/* --- Compact Chat Messages Area --- */
+.chat-messages {
+  max-width: 720px; 
+  margin: 0 auto;
+  padding: 24px 16px; 
+  display: flex;
+  flex-direction: column;
+  gap: 16px; 
+}
+
+.message { 
+  max-width: 85%; 
+  display: flex; 
+  flex-direction: column; 
+}
+.message.ai { align-self: flex-start; }
+.message.user { align-self: flex-end; }
+
+.avatar-header { 
+  display: flex; 
+  align-items: center; 
+  gap: 8px; 
+  margin-bottom: 4px; 
+}
+
+.message.user .avatar-header { flex-direction: row-reverse; }
+
+.avatar { 
+  width: 24px; 
+  height: 24px; 
+  border-radius: 6px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  font-size: 11px;
+}
+
+.ai-icon { background: #1a2c2e; border: 1px solid #21CAB9; color: #21CAB9; }
+.user-icon { background: #30363d; color: #8b949e; }
+
+.sender-name { font-size: 13px; color: #fff; font-weight: 500; }
+.timestamp { font-size: 10px; color: #484f58; }
+
+.msg-bubble {
+  background-color: #161b22;
+  border: 1px solid #30363d;
+  padding: 10px 14px; 
+  border-radius: 14px; 
+  color: #e6edf3;
+  line-height: 1.5; 
+  font-size: 13.5px; 
+  word-wrap: break-word;       /* Forces long words to break */
+  overflow-wrap: break-word;   /* Modern browser support for breaking words */
+  word-break: break-word;      /* Prevents overflow in flex items */
+  overflow: hidden;
+}
+
+/* --- Compact File Bubble --- */
+.file-attachment-bubble {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #1c2128;
+  border: 1px solid #444c56;
+  padding: 8px 12px;
+  border-radius: 10px;
+}
+
+.file-name-text { font-size: 13px; font-weight: 600; color: #fff; }
+.file-meta { font-size: 10px; color: #8b949e; display: block; }
+
+/* --- Input Area: Position & Click Fixes --- */
+.chat-input-area {
+  background-color: #0C0E12 !important;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 16px;
+  z-index: 999;
+  position: relative;
+  pointer-events: auto;
+  border: none !important;
+}
+
+/* Sticky behavior with gradient in active chat */
+.is-active .chat-input-area {
+  position: sticky;
+  bottom: 0;
+  background: linear-gradient(to top, #0C0E12 85%, transparent);
+  padding-bottom: 16px;
+}
+
+.input-wrapper-container { width: 100%; max-width: 680px; }
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 12px; 
+  padding: 6px 14px; 
+  gap: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: border-color 0.2s;
+}
+
+.input-wrapper:focus-within { border-color: #21CAB9; }
+
+.input-wrapper input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 14px; 
+  outline: none;
+  padding: 8px 0;
+}
+
+/* --- Buttons --- */
+.attach-btn {
+  background: transparent;
+  border: none;
+  color: #8b949e;
+  cursor: pointer !important;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 1000;
+}
+.attach-btn:hover { color: #fff; }
+
+.send-btn {
+  background: #21CAB9;
+  border-radius: 50%; /* Essential for the circle */
+  width: 32px; 
+  height: 32px;
+  min-width: 32px;   /* Added: Guarantees it doesn't squash */
+  min-height: 32px;  /* Added: Guarantees it doesn't stretch */
+  flex-shrink: 0;     /* Added: Prevents the parent flexbox from deforming it */
+  color: #000;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;        /* Added: Padding can turn circles into ovals */
+  transition: transform 0.2s;
+}
+
+.send-btn:hover:not(:disabled) { transform: scale(1.05); }
+.send-btn:disabled { background: #30363d; color: #8b949e; cursor: not-allowed; }
+
+.disclaimer {
+  text-align: center;
+  font-size: 10px; 
+  color: #484f58;
+  margin-top: 8px;
+}
+
+.scroll-bottom-spacer { height: 20px; flex-shrink: 0; }
+
+/* Custom Scrollbar */
+.chat-content-wrapper::-webkit-scrollbar { width: 4px; }
+.chat-content-wrapper::-webkit-scrollbar-thumb { background: #30363d; border-radius: 10px; }
+
+/* Animation Utilities */
+.animate-spin { animation: spin 1s linear infinite; }
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+/* --- Markdown Styling for AI Responses --- */
+.markdown-body {
+  line-height: 1.6;
+  font-size: 13.5px;
+  color: #e0e0e0;
+  
+  /* FIXES OVERFLOW: Forces long text to wrap to a new line */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden; /* Prevents horizontal scrolling inside the bubble */
+}
+
+/* Headers: Making "Agreement Overview" pop */
+.markdown-body h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 5px;
+}
+
+/* Financial Summary List */
+.markdown-body ul {
+  margin: 10px 0;
+  padding-left: 1.2rem; /* Reduced from 20px to fit better in bubbles */
+  list-style-type: disc;
+  /* Ensures list items don't push the bubble out */
+  overflow: hidden; 
+  
+}
+
+.markdown-body li {
+  margin-bottom: 6px;
+  word-wrap: break-word;
+}
+
+/* Horizontal Rule */
+.markdown-body hr {
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: none;
+  margin: 1.5rem 0;
+}
+
+/* Bold text */
+.markdown-body strong {
+  color: #ffffff; /* Teal color to match your LeaseIQ theme */
+  font-weight: 600;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .markdown-body h2 {
+    font-size: 1.1rem;
+  }
+  .markdown-body {
+    font-size: 0.9rem;
+  }
+}
+

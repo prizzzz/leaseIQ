@@ -1,0 +1,418 @@
+/* 1. Main Container - Aligns with Sidebar and Navbar */
+.simulator-view-container {
+  display: flex;
+  height: 100%; /* Fills the middle section completely */
+  width: 100%;
+  background: #0C0E12; /* Matches your background exactly */
+  overflow: hidden;
+  border-top:1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* 2. Internal Sidebar - Sits flush against Main App Sidebar */
+.sim-internal-sidebar {
+    
+  width: 220px;
+  background: #0C0E12;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+}
+
+.sim-sidebar-label {
+  padding: 16px 16px 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #4b5563;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+ 
+  
+}
+
+.sim-thread-list {
+  padding: 0 8px;
+
+}
+
+.sim-thread-card {
+  padding: 12px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #9ca3af;
+  font-size: 13.5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.2s ease;
+}
+
+.sim-thread-card:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.sim-thread-card.active {
+  background: rgba(33, 202, 185, 0.1); /* LeaseIQ Teal at low opacity */
+  color: #21CAB9;
+}
+
+.sim-thread-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #374151;
+}
+
+.sim-thread-card.active .sim-thread-dot {
+  background: #21CAB9;
+  box-shadow: 0 0 8px #21CAB9;
+}
+
+/* 3. Main Chat Area - Sits flush under Navbar */
+.sim-main-chat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 100%;
+}
+
+.sim-chat-header {
+  padding: 16px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.sim-chat-header h2 {
+  font-size: 1.1rem;
+  margin: 0;
+  color: white;
+}
+
+.sim-chat-header p {
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* 4. Message List Area */
+.sim-messages-area {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Custom Scrollbar to match Dark Theme */
+.sim-messages-area::-webkit-scrollbar {
+  width: 6px;
+}
+.sim-messages-area::-webkit-scrollbar-track {
+  background: transparent;
+}
+.sim-messages-area::-webkit-scrollbar-thumb {
+  background: #2D333B;
+  border-radius: 10px;
+}
+
+.sim-row {
+  width: 100%;
+  max-width: 800px; /* Centered focus like ChatGPT */
+  margin: 0 auto 24px auto;
+  padding: 0 20px;
+  display: flex;
+}
+
+.sim-row.user { justify-content: flex-end; }
+.sim-row.dealer { justify-content: flex-start; }
+
+.sim-bubble {
+  max-width: 85%;
+  padding: 12px 18px;
+  font-size:13.5px;
+  line-height: 1.6;
+}
+
+.sim-row.user .sim-bubble {
+  background: #21CAB9;
+  color: #0C0E12;
+  border-radius: 20px 20px 4px 20px;
+  font-weight: 500;
+}
+
+.sim-row.dealer .sim-bubble {
+  background: #161b22;
+  color: #e5e7eb;
+  border-radius: 20px 20px 20px 4px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Typing Animation */
+.typing {
+  color: #6b7280;
+  font-size: 0.85rem;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.5; }
+  50% { opacity: 1; }
+  100% { opacity: 0.5; }
+}
+
+/* 5. Suggested Questions Grid */
+.sim-suggestions-tray {
+  /* Remove large vertical margins to save space */
+  margin: 12px 0 8px 0; 
+  padding: 0 20px;
+  width: 100%;
+}
+
+.sim-suggestions-tray p {
+  font-size: 0.7rem; /* Smaller font */
+  color: #6b7280;
+  margin-bottom: 6px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.sim-suggestions-grid {
+  display: flex; /* Switch from grid to flex for horizontal flow */
+  flex-wrap: wrap; /* Allows pills to wrap to next line if needed */
+  gap: 8px;
+  justify-content: flex-start;
+}
+
+.sim-suggestions-grid button {
+  background: rgba(33, 202, 185, 0.05); /* Softer background */
+  border: 1px solid rgba(33, 202, 185, 0.2);
+  color: #21CAB9;
+  padding: 6px 12px; /* Thinner padding to take less space */
+  border-radius: 20px; /* Pill shape */
+  font-size: 0.8rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap; /* Keeps text on one line per pill */
+}
+
+.sim-suggestions-grid button:hover {
+  background: rgba(33, 202, 185, 0.15);
+  border-color: #21CAB9;
+  transform: translateY(-1px);
+}
+
+.sim-suggestions-grid button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  border-color: #374151;
+  color: #4b5563;
+}
+
+/* 6. Input Area at the bottom */
+/* 6. Input Area at the bottom */
+.sim-input-wrapper {
+  padding: 10px 20px 30px; /* Reduced top padding for a tighter look */
+}
+
+.sim-input-container {
+  max-width: 700px; /* Condensed width for better readability */
+  margin: 0;
+  background: #161b22;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  display: flex;
+  align-items: center; /* Changed from flex-end to center for perfect text alignment */
+  padding: 6px 10px; /* Tightened padding */
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+.sim-input-container textarea {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #e5e7eb;
+  padding: 10px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  resize: none;
+  min-height: 24px;
+  max-height: 150px;
+  line-height: 1.5;
+}
+
+.sim-input-container textarea::placeholder {
+  color: #6b7280;
+}
+
+.send-btn {
+  background: #21CAB9;
+  color: #0C0E12;
+  border: none;
+  height: 32px;
+  min-width: 64px;
+  padding: 0 12px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 700;
+  transition: all 0.2s ease;
+  /* margin-bottom removed to keep it centered */
+}
+
+.send-btn:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.send-btn:disabled {
+  background: #374151;
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.sim-active-badge {
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  font-size: 13px;
+  color: #4b5563;
+  margin-top: 4px;
+}
+
+.sim-no-lease-text {
+  color: #f85149; /* Red warning */
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+
+
+/* ============================================================
+   TABLET & MOBILE REFINEMENTS (Max 1024px)
+   ============================================================ */
+@media (max-width: 1024px) {
+  /* 1. Stack the internal sidebar above the chat */
+  .simulator-view-container {
+    flex-direction: column;
+    height: calc(100vh - 60px); /* Adjust based on your header height */
+  }
+
+  /* 2. Transform Sidebar into a horizontal pill-bar */
+  .sim-internal-sidebar {
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 8px;
+  }
+
+  .sim-sidebar-label {
+    padding: 10px 16px 4px;
+    font-size: 0.65rem;
+  }
+
+  .sim-thread-list {
+    display: flex;
+    flex-direction: row; /* Horizontal layout */
+    overflow-x: auto;
+    gap: 8px;
+    padding: 4px 16px 8px;
+    scrollbar-width: none; /* Firefox */
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .sim-thread-list::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+  }
+
+  .sim-thread-card {
+    flex-shrink: 0; /* Prevents pills from crushing */
+  
+  }
+
+  /* Hide the dot on mobile to save space */
+  .sim-thread-dot {
+    display: none;
+  }
+}
+
+/* ============================================================
+   MOBILE SPECIFIC (Max 768px)
+   ============================================================ */
+@media (max-width: 768px) {
+  /* 3. Expand chat bubbles to use more screen width */
+  .sim-row {
+    max-width: 100%;
+    padding: 0 12px;
+    margin-bottom: 16px;
+  }
+
+  .sim-bubble {
+    max-width: 90%; /* Much wider for mobile readability */
+    font-size: 13px;
+    padding: 10px 14px;
+    line-height: 1.4;
+  }
+
+  /* 4. Suggestions Tray Refinement */
+  .sim-suggestions-tray {
+    padding: 8px 12px;
+    margin: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .sim-suggestions-grid {
+    display: flex;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    gap: 8px;
+    padding-bottom: 8px;
+    scrollbar-width: none;
+  }
+
+  .sim-suggestions-grid button {
+    flex-shrink: 0;
+    font-size: 11.5px;
+    padding: 8px 16px;
+    border-radius: 18px;
+  }
+
+  /* 5. Input Area - "Floating Pill" Style */
+  .sim-input-wrapper {
+    padding: 8px 12px 20px; /* Extra bottom padding for mobile safe area */
+  }
+
+  .sim-input-container {
+    max-width: 100%;
+    padding: 4px 6px;
+  }
+
+  .sim-input-container textarea {
+    font-size: 14px; /* Prevents iOS auto-zoom on focus */
+    padding: 10px 12px;
+  }
+
+
+}
+
+/* ============================================================
+   EXTRA SMALL SCREENS (Max 480px)
+   ============================================================ */
+@media (max-width: 480px) {
+  .sim-chat-header {
+    padding: 10px 16px;
+  }
+
+  .sim-chat-header h2 {
+    font-size: 0.95rem;
+  }
+
+  .sim-active-badge {
+    font-size: 10.5px;
+  }
+}

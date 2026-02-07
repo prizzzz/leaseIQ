@@ -1,0 +1,416 @@
+/* 1. Main Container: Fixed Sidebar */
+.summary-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 380px; 
+  height: 100vh;
+  background-color: #0d1117 !important; 
+  border-left: 1px solid #30363d;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.6);
+  animation: slideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 0% !important;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+/* 2. Header: Slim and Professional */
+.summary-header {
+  padding: 18px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #30363d;
+  background-color: #161b22;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.summary-header h3 {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #c9d1d9;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin: 0;
+}
+
+.close-icon {
+  cursor: pointer;
+  color: #8b949e;
+  transition: all 0.2s ease;
+}
+
+.close-icon:hover {
+  color: #f85149;
+  transform: rotate(90deg);
+}
+
+/* 3. Main Content Wrapper */
+.summary-main {
+  padding: 24px;
+  overflow-y: auto;
+  flex: 1;
+  scrollbar-width: thin;
+  scrollbar-color: #30363d transparent;
+}
+
+.summary-main::-webkit-scrollbar {
+  width: 5px;
+}
+
+.summary-main::-webkit-scrollbar-thumb {
+  background: #30363d;
+  border-radius: 10px;
+}
+
+/* 4. Vehicle Identity & VIN Pill */
+.car-identity {
+  margin-bottom: 28px;
+}
+
+.car-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 10px 0;
+  letter-spacing: -0.03em;
+}
+
+.vin-badge-container {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(33, 202, 185, 0.1);
+  border: 1px solid rgba(33, 202, 185, 0.2);
+  padding: 5px 12px;
+  border-radius: 8px;
+  gap: 10px;
+}
+
+.vin-badge-text {
+  font-family: 'JetBrains Mono', 'Monaco', monospace;
+  font-size: 12px;
+  color: #21CAB9;
+  letter-spacing: 0.5px;
+}
+
+.vin-copy-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #8b949e;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s ease;
+}
+
+.vin-copy-btn:hover {
+  color: #fff;
+}
+
+/* 5. Metrics Hero Grid (EMI & Tenure) */
+.metrics-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.hero-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform 0.2s ease;
+}
+
+.hero-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(33, 202, 185, 0.3);
+}
+
+.hero-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #8b949e;
+}
+
+.emi-theme .hero-card-header { color: #21CAB9; }
+.tenure-theme .hero-card-header { color: #3b82f6; }
+
+.hero-card-body {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.hero-value {
+  font-size: 22px;
+  font-weight: 800;
+  color: #fff;
+}
+
+.hero-currency, .hero-unit {
+  font-size: 13px;
+  color: #57606a;
+  font-weight: 600;
+}
+
+/* 6. Financial Data List */
+.plain-summary {
+  background: #161b22;
+  padding: 20px;
+  border-radius: 14px;
+  border: 1px solid #30363d;
+  margin-bottom: 28px;
+}
+
+.financial-data-list {
+  margin-top: 16px;
+}
+
+.data-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #30363d;
+  font-size: 13px;
+  color: #8b949e;
+}
+
+.data-row:last-child {
+  border-bottom: none;
+}
+
+.data-row strong {
+  color: #fff;
+  font-weight: 600;
+}
+
+.total-payable-row {
+  margin-top: 8px;
+  padding-top: 14px !important;
+  border-top: 1px dashed #30363d;
+}
+
+.total-payable-row span {
+  color: #fff;
+  font-weight: 700;
+}
+
+.total-highlight-val {
+  font-size: 1.25rem;
+  color: #21CAB9 !important;
+  font-weight: 800;
+}
+
+/* 7. Junk Fee Detection */
+.junk-fees-container {
+  background: rgba(245, 158, 11, 0.03);
+  border: 1px solid rgba(245, 158, 11, 0.15);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 28px;
+}
+
+.junk-fee-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(245, 158, 11, 0.08);
+}
+
+.junk-fee-item:last-child { border-bottom: none; }
+
+.junk-fee-name {
+  color: #fff;
+  font-size: 13px;
+  margin: 0;
+}
+
+.junk-fee-amount {
+  color: #f59e0b;
+  font-weight: 700;
+}
+
+.no-junk-fees {
+  text-align: center;
+  color: #57606a;
+  font-style: italic;
+  font-size: 12px;
+}
+
+/* 8. Contractual Grid */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.metric-card {
+  background: #1c2128;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid #30363d;
+}
+
+.metric-card .label {
+  font-size: 9px;
+  color: #8b949e;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.metric-card .val {
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  margin-top: 5px;
+}
+
+/* 9. Section Typography */
+.section-title {
+  font-size: 11px;
+  color: #21CAB9;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin: 0 0 14px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+}
+
+.section-title.warning {
+  color: #f59e0b;
+}
+
+/* Tooltip */
+.copy-tooltip {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #21262d;
+  color: #21CAB9;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  border: 1px solid rgba(33, 202, 185, 0.3);
+  white-space: nowrap;
+}
+
+.fairness-score-box {
+  background: linear-gradient(145deg, #1c2128, #161b22);
+  border: 1px solid #30363d;
+  border-radius: 20px;
+  padding: 24px;
+  margin-bottom: 28px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+/* Subtle background glow based on rating */
+.fairness-score-box::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, transparent 70%, rgba(33, 202, 185, 0.05) 100%);
+  pointer-events: none;
+}
+
+/* Dynamic Borders & Glows */
+.fairness-score-box.fair { 
+  border-color: rgba(33, 202, 185, 0.4); 
+  box-shadow: 0 4px 20px rgba(33, 202, 185, 0.1);
+}
+.fairness-score-box.moderate { 
+  border-color: rgba(245, 158, 11, 0.4); 
+  box-shadow: 0 4px 20px rgba(245, 158, 11, 0.1);
+}
+.fairness-score-box.unfair { 
+  border-color: rgba(248, 81, 73, 0.4); 
+  box-shadow: 0 4px 20px rgba(248, 81, 73, 0.1);
+}
+
+.score-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #8b949e;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.score-display {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 2px;
+  margin-bottom: 12px;
+}
+
+.score-num {
+  font-size: 42px;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1;
+}
+
+.score-total {
+  font-size: 16px;
+  color: #57606a;
+  font-weight: 600;
+}
+
+/* Badge for Rating Text */
+.score-status-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.fair .score-status-badge { background: #21CAB9; color: #0d1117; }
+.moderate .score-status-badge { background: #f59e0b; color: #0d1117; }
+.unfair .score-status-badge { background: #f85149; color: #fff; }
+
+.score-explanation {
+  font-size: 12px;
+  color: #8b949e;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0 10px;
+}
