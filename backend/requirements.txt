@@ -1,0 +1,22 @@
+# Web Server & Framework
+fastapi==0.109.0
+uvicorn==0.27.0
+python-multipart==0.0.6
+
+# Database & ORM
+sqlalchemy==2.0.25
+psycopg2-binary==2.9.9
+
+# OCR & Document Processing
+# Note: Requires system-level installation of Tesseract and Poppler
+pytesseract==0.3.10
+pdf2image==1.17.0
+pillow==10.2.0
+
+# AI & LLM
+groq==0.4.2
+pydantic==2.6.1
+
+# Utilities
+requests==2.31.0
+python-dotenv==1.0.1
