@@ -11,7 +11,7 @@ psycopg2-binary==2.9.9
 # Note: Requires system-level installation of Tesseract and Poppler
 pytesseract==0.3.10
 pdf2image==1.17.0
-pillow==10.2.0
+pillow==10.3.0
 
 # AI & LLM
 groq==0.4.2
